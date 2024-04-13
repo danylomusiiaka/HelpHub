@@ -83,13 +83,13 @@ h2 {
     color: #76bdf1e5;
     font-weight: 400;
 }
-
+.input-file-field,
 .input-field {
     position: relative;
     margin-bottom: 10px;
     margin-top: 10px;
 }
-
+.input-file-field,
 .input-field input {
     border: none;
     outline: none;
@@ -104,10 +104,6 @@ h2 {
     color: white;
 }
 
-.login {
-    padding-top: 50px;
-}
-
 .input-label {
     position: absolute;
     text-align: left;
@@ -116,8 +112,29 @@ h2 {
     width: fit-content;
     color: #76bdf1e5;
     transition: 0.5s;
+    z-index: -100;
 }
 
+.input-file-field {
+    border: none;
+    margin: 20px 0;
+}
+
+.input-file-label {
+    padding-bottom: 10px;
+    width: 100%;
+    border-bottom: 2px solid rgba(69, 92, 108, 0.4);
+}
+
+.auth-file-input {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+.auth-button-container {
+}
 
 .auth-submit-button {
     background-color: #002037;
@@ -132,7 +149,16 @@ h2 {
     border-color: #2ea7ff;
 }
 
-.auth-input:focus+.input-label,
-.auth-input:not(:placeholder-shown)+.input-label {
+.auth-input:focus + .input-label,
+.auth-input:not(:placeholder-shown) + .input-label {
     transform: translateY(-0.5rem) scale(0.8);
+    margin-top: -5px;
+}
+
+.upload-image {
+    position: absolute;
+    right: 0;
+    height: 24px;
+    width: 24px;
+    z-index: -99;
 }
