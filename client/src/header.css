@@ -17,7 +17,7 @@ img {
     margin-right: 1rem;
 }
 
-button {
+header button {
     border: 1px solid white;
     background-color: transparent;
     color: white;
@@ -28,7 +28,7 @@ button {
     display: inline-block;
 }
 
-button:hover {
+header button:hover {
     background-color: white;
     color: black;
 }
