@@ -16,6 +16,4 @@ const verifyVolunteer = async (request, response) => {
   return response.status(200).json({ message: "Verified organisation" });
 };
 
-module.exports = {
-  verifyVolunteer,
-};
+module.exports = { verifyVolunteer };
