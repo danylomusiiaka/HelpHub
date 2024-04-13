@@ -6,6 +6,8 @@ const { login } = require('./auth/login.js');
 const { corsMiddleware } = require('./cors.js');
 const bcrypt = require('bcrypt');
 
+const { verifyVolunteer } = require("./volunteer/verify.js")
+
 //підключення й ініціалізація бази даних
 mongoose.connect("mongodb://127.0.0.1:27017/projectdb")
 
@@ -59,6 +61,7 @@ app.post('/adduser', async (req, res) => {
 })
 
 app.post("/login", login);
+app.put("/admin/verify-volunteer", verifyVolunteer);
 
 //задання порту для серверу
 app.listen(3001, () => {

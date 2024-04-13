@@ -10,6 +10,7 @@ const generateAccessToken = (id, password) => {
     };
     return jwt.sign(payload, "123", { expiresIn: '7d' });
 };
+
 const login = async (req, res) => {
     const { email, password } = req.body;
 
