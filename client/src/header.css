@@ -1,0 +1,53 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 2rem;
+    color: #fff;
+}
+
+img {
+    display: flex;
+    align-items: center;
+    width: 130px;
+    margin-right: 1rem;
+}
+
+button {
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+.links{
+    display: flex;
+    align-items: center;
+    
+}
+
+.links a {
+    font-weight: 500;
+    font-size: 17px;
+    color: white;
+    text-decoration: inherit;
+    margin-right: 50px;
+}
+
+.links a:hover {
+    color: #535bf2;
+}
+

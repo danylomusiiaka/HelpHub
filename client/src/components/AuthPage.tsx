@@ -4,6 +4,7 @@ import "../form.css";
 import { Link } from "react-router-dom";
 
 function AuthPage() {
+
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,10 +19,12 @@ function AuthPage() {
             email: email,
         });
         if (response.status === 200) {
+
         }
     };
 
     return (
+
         <div className="auth-container">
             <div className="swap-container">
                 <button className="swap-button">Приватна особа</button>
@@ -102,6 +105,7 @@ function AuthPage() {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }
