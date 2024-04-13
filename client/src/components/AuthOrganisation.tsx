@@ -13,7 +13,7 @@ function AuthOrganisation() {
     const [message, setMessage] = useState("");
 
     const handleSubmit = async () => {
-        const response = await Axios.post("http://localhost:3001/adduser", {
+        const response = await Axios.post("http://localhost:3001/addorganisation", {
             name: name,
             password: password,
             email: email,
