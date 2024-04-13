@@ -19,7 +19,6 @@ function AuthPage() {
             email: email,
         });
         if (response.status === 200) {
-            // Обробка успішної відправки форми
         }
     };
 

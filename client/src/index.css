@@ -6,6 +6,7 @@
     color: #9cd1f7;
     background-color: #262626;
 }
+
 #root {
     max-width: 1480px;
     margin: 0 auto;
@@ -46,9 +47,11 @@ button {
     cursor: pointer;
     transition: border-color 0.25s;
 }
+
 button:hover {
     border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
@@ -81,3 +84,4 @@ input {
         background-color: transparent;
     }
 }
+
