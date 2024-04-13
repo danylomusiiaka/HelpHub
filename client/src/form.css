@@ -65,11 +65,7 @@ h2{
   transform: translateY(-50%);
   transition: 0.5s;
   pointer-events: none;
-}
-
-.input-field input:valid+label {
-  top: 0px;
-  font-size: 1rem;
+  top: 0;
 }
 
 .input-field input:focus+label {

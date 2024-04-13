@@ -3,7 +3,7 @@ import Axios from 'axios';
 import '../form.css';
 import { Link } from 'react-router-dom';
 
-function AuthPage() {
+function AuthOrganisation() {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -39,7 +39,7 @@ function AuthPage() {
             </div>
             <div className='input-field'>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                <label>ПІБ:</label>
+                <label>Назва організації:</label>
             </div>
             <div className='input-field'>
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -62,6 +62,7 @@ function AuthPage() {
             <p>{message}</p>
         </div>
     );
+
 }
 
-export default AuthPage;
+export default AuthOrganisation;
