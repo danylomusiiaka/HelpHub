@@ -104,6 +104,10 @@ h2 {
     color: white;
 }
 
+.login {
+    padding-top: 50px;
+}
+
 .input-label {
     position: absolute;
     text-align: left;
