@@ -9,3 +9,17 @@
   padding: 2em;
 }
 
+.input-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container input {
+  margin-bottom: 10px;
+}
+
+.input-form p {
+  margin: 0;
+  text-align: left;
+}
+
