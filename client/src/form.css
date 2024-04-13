@@ -38,6 +38,7 @@ h2 {
     background-color: #00000047;
     position: relative;
 }
+
 .swap-container {
     display: flex;
     justify-content: space-between;
@@ -62,6 +63,12 @@ h2 {
     display: block;
     width: 100%;
     height: 2px;
+}
+
+.swap-button.active {
+    border: 2px solid rgba(13, 152, 253, 1);
+    color: rgba(118, 189, 241, 1);
+    background: rgba(0, 32, 55, 1);
 }
 
 .input-form {
@@ -92,9 +99,11 @@ h2 {
     border-bottom: 2px solid rgba(69, 92, 108, 0.4);
     border-radius: 0;
     width: 100%;
-    color: #9cd1f7;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
 }
-.input-file-label,
+
 .input-label {
     position: absolute;
     text-align: left;
@@ -132,7 +141,6 @@ h2 {
     border-radius: 40px;
     border-color: #0d98fd;
     color: #9cd1f7;
-    margin-top: 60px;
     width: 180px;
 }
 

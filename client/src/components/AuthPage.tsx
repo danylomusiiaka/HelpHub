@@ -9,32 +9,42 @@ function AuthPage() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
+
+    const isPrivatePage = location.pathname === "/auth";
     const [pressedContinue, setPressedContinue] = useState(false);
 
     const handleSubmit = async () => {
-        const response = await Axios.post("http://localhost:3001/adduser", {
+        await Axios.post("http://localhost:3001/adduser", {
             fullName: fullName,
             phoneNumber: phoneNumber,
             password: password,
             email: email,
         });
-        if (response.status === 200) {
-        }
     };
 
     return (
         <div className="auth-container">
             <div className="swap-container">
-                <button className="swap-button">Приватна особа</button>
-                <button className="swap-button">
-                    Волонтерська організація
-                </button>
+                <Link to="/auth">
+                    <button
+                        className={`swap-button ${
+                            isPrivatePage ? "active" : ""
+                        }`}
+                    >
+                        Приватна особа
+                    </button>
+                </Link>
+                <Link to="/authorganisation">
+                    <button className="swap-button">
+                        Волонтерська організація
+                    </button>
+                </Link>
             </div>
             <div className="logo-form-container">
                 <div className="auth-image-box">
                     <img
                         className="auth-logo-img"
-                        src="../../public/logo.png"
+                        src="logo.svg"
                         alt="Логотип"
                     />
                     <label>Платформа для допомоги</label>
