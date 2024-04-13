@@ -5,6 +5,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const { login } = require('./auth/login.js')
 
+const bcrypt = require('bcrypt');
 
 //підключення й ініціалізація бази даних
 mongoose.connect("mongodb://127.0.0.1:27017/projectdb")
@@ -15,23 +16,45 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 //що будемо туди відправляти
-const testSchema = new mongoose.Schema({
-    test_value: {
+const authSchema = new mongoose.Schema({
+    surname: {
+        type: String,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    address: {
         type: String,
         required: true
     }
 })
 
-const testModel = mongoose.model('tests', testSchema)
+const authModel = mongoose.model('users', authSchema)
 
-app.post('/addtest', async (req, res) => {
-    const test_value = req.body.test_value
+app.post('/adduser', async (req, res) => {
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
 
-    const test = new testModel({
-        test_value: test_value
+
+    const auth = new authModel({
+        surname: req.body.surname,
+        name: req.body.name,
+        password: hashedPassword,
+        email: req.body.email,
+        address: req.body.address,
     })
 
-    await test.save()
+    await auth.save()
     res.send('200 Success')
 })
 
