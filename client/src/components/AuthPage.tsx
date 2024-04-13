@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Axios from 'axios';
+import '../form.css';
+import { Link } from 'react-router-dom';
 
 function AuthPage() {
     const [surname, setSurname] = useState("");
@@ -29,16 +31,31 @@ function AuthPage() {
 
     return (
         <div className='input-form'>
-            <p>Ім'я:</p>
-            <input type="text" value={surname} onChange={(e) => setSurname(e.target.value)} />
-            <p>Прізвище:</p>
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-            <p>Пошта:</p>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <p>Пароль:</p>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <p>Адреса:</p>
-            <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+            <h2>Реєстрація</h2>
+            <div className='container'>
+                <Link to='/private'><button>Приватна особа</button></Link>
+                <Link to='/volounteer'><button>Волонтерська організація</button></Link>
+            </div>
+            <div className='input-field'>
+                <input type="text" value={surname} onChange={(e) => setSurname(e.target.value)} />
+                <label>Ім'я:</label>
+            </div>
+            <div className='input-field'>
+                <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                <label>Прізвище:</label>
+            </div>
+            <div className='input-field'>
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <label>Пошта:</label>
+            </div>
+            <div className='input-field'>
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <label>Пароль:</label>
+            </div>
+            <div className='input-field'>
+                <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+                <label>Адреса:</label>
+            </div>
             <br />
             <button onClick={handleSubmit}>Submit</button>
             <p>{message}</p>
