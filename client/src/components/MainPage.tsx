@@ -1,15 +1,8 @@
-import { Link } from 'react-router-dom'
+import Header from './Header'
 
 function MainPage() {
     return (
-        <div>
-            <Link to="/auth">
-                <button>Реєстрація</button>
-            </Link>
-            <Link to="/login">
-                <button>Логін</button>
-            </Link>
-        </div>
+        <Header/>
     )
 }
 

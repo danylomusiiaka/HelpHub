@@ -4,24 +4,17 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(180.06deg, #393B3C 0.05%, rgba(100, 120, 136, 0.47) 26.13%, rgba(89, 95, 100, 0) 71.06%);
- 
+  background: linear-gradient(0deg, #292929, #292929),
+      linear-gradient(269.24deg, rgba(0, 0, 0, 0.2) -7.6%, rgba(0, 0, 0, 0) 48.36%);
+
 }
+
 #root {
   max-width: 1480px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  width: 350px;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  width: 100%;
 }
 
 body {
@@ -48,9 +41,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -76,9 +71,11 @@ input {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
