@@ -2,12 +2,14 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const cors = require('cors')
-const bodyParser = require('body-parser') 
+const bodyParser = require('body-parser')
+const { login } = require('./auth/login.js')
+
 
 //підключення й ініціалізація бази даних
 mongoose.connect("mongodb://127.0.0.1:27017/projectdb")
 
-app.use(cors()) 
+app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -23,7 +25,7 @@ const testSchema = new mongoose.Schema({
 const testModel = mongoose.model('tests', testSchema)
 
 app.post('/addtest', async (req, res) => {
-    const test_value = req.body.test_value 
+    const test_value = req.body.test_value
 
     const test = new testModel({
         test_value: test_value
@@ -32,6 +34,8 @@ app.post('/addtest', async (req, res) => {
     await test.save()
     res.send('200 Success')
 })
+
+app.post("/api/login", login);
 
 //задання порту для серверу
 app.listen(3001, () => {
