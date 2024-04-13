@@ -1,0 +1,34 @@
+.container {
+  min-height: 450px;
+  min-width: 857px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.createPostHeader {
+  font-size: 32px;
+  margin-top: 30px;
+}
+
+.requestForm {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  font-size: 20px;
+  border-radius: 60px;
+  background: #1a1a1a;
+  position: relative;
+  z-index: 0;
+  padding: 30px;
+}
+
+.userOptions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.checkBoxLabel {
+  font-size: 12px;
+}

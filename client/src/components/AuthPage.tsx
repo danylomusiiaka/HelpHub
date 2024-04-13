@@ -58,7 +58,7 @@ function AuthPage() {
                                 type="text"
                                 value={fullName}
                                 placeholder=" "
-                                onChange={(e) => setFullName(e.target.value)}
+                                onChange={(event) => setFullName(event.target.value)}
                             />
                             <label className="input-label">ПІБ:</label>
                         </div>
