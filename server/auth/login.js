@@ -1,26 +1,27 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const User = require('../models/userModel.js');
+const auth = require('../index.js');
+const { default: mongoose } = require('mongoose');
 
-const generateAccessToken = (id, role) => {
+const generateAccessToken = (id, password) => {
     const payload = {
         id,
-        role,
+        password
     };
-    return jwt.sign(payload, process.env.SECRET, { expiresIn: '7d' });
+    return jwt.sign(payload, "123", { expiresIn: '7d' });
 };
-
 const login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({ email });
+        const user = await auth.authModel.findOne({ email: email });
+
         if (!user) {
             console.log('User not found');
             return res.status(401).json({ error: 'Invalid email or password' });
         }
 
-        const passwordMatch = await bcrypt.compare(password, user.password_hash);
+        const passwordMatch = await bcrypt.compare(password, user.password);
         if (passwordMatch) {
             const accessToken = generateAccessToken(user._id, 'user');
             return res.status(200).json({
