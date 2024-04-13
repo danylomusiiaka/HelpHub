@@ -7,7 +7,7 @@ const { corsMiddleware } = require("./cors.js");
 const bcrypt = require("bcrypt");
 
 const { verifyVolunteer } = require("./volunteer/verify.js");
-
+const { addVolunteerPost,getAllVolunteerPosts } = require("./volunteer/post.js")
 // підключення й ініціалізація бази даних
 mongoose.connect(
   "mongodb+srv://admin:3FTlj80Nx9mPMcL7@petprojects.9spehpo.mongodb.net/?retryWrites=true&w=majority&appName=PetProjects"
@@ -39,14 +39,41 @@ const authSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+});
+
+const organisationSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  phone_number: {
+    type: String,
+    required: true,
+  },
+  status: {
+    type: String,
+    required: true,
+  },
   is_verified: {
     type: Boolean,
     required: false,
   },
+  file_base64: {
+    type: String,
+    required: true,
+  },
 });
 
 const authModel = mongoose.model("users", authSchema);
-const organisationsModel = mongoose.model("organisations", authSchema);
+const organisationsModel = mongoose.model("organisations", organisationSchema);
 
 async function saveUserData(request, response, userModel) {
   const saltRounds = 10;
@@ -78,8 +105,10 @@ app.post("/addorganisation", async (request, response) => {
     email: request.body.email,
     phone_number: request.body.phone_number,
     status: request.body.status,
+    file_base64: request.body.file_base64,
     is_verified: false,
   });
+
   await organisation.save();
 
   return response
@@ -88,7 +117,12 @@ app.post("/addorganisation", async (request, response) => {
 });
 
 app.post("/login", login);
+
+app.post("/volunteer", addVolunteerPost);
+app.get("/volunteer", getAllVolunteerPosts);
+
 app.put("/admin/verify-volunteer", verifyVolunteer);
+app.put("/admin/verify-job", () => null)
 
 //задання порту для серверу
 app.listen(3001, () => {
