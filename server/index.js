@@ -17,10 +17,6 @@ app.use(bodyParser.json())
 
 //що будемо туди відправляти
 const authSchema = new mongoose.Schema({
-    surname: {
-        type: String,
-        required: true
-    },
     name: {
         type: String,
         required: true
@@ -33,32 +29,46 @@ const authSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    address: {
+    phone_number: {
+        type: String,
+        required: true
+    },
+    status: {
         type: String,
         required: true
     }
 })
 
 const authModel = mongoose.model('users', authSchema)
+const authModel2 = mongoose.model('organisations', authSchema)
 
-app.post('/adduser', async (req, res) => {
+
+async function saveUserData(req, res, Model) {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
 
-    console.log(req.body)
+    console.log(req.body);
 
-    const auth = new authModel({
-        surname: req.body.surname,
+    const auth = new Model({
         name: req.body.name,
         password: hashedPassword,
         email: req.body.email,
-        address: req.body.address,
-    })
+        phone_number: req.body.phone_number,
+        status: req.body.status
+    });
 
+    await auth.save();
+    res.send('200 Success');
+}
 
-    await auth.save()
-    res.send('200 Success')
-})
+app.post('/adduser', async (req, res) => {
+    await saveUserData(req, res, authModel);
+});
+
+app.post('/addorganisation', async (req, res) => {
+    await saveUserData(req, res, authModel2);
+});
+
 
 app.post("/login", login);
 app.put("/admin/verify-volunteer", verifyVolunteer);

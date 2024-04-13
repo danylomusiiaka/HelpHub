@@ -13,6 +13,7 @@ function LoginPage() {
             email: email,
             password: password,
         });
+        console.log(response)
         if (response.status === 200) {
             const token = response.data.accessToken;
             localStorage.setItem("token", token);
