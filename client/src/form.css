@@ -1,0 +1,78 @@
+h2{
+  color: rgba(221, 235, 245, 1);
+}
+
+
+
+.container {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+}
+
+.container button {
+  background-color: transparent;
+  border: none;
+  color: rgba(221, 235, 245, 1);
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.container button::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: orange;
+  /* Оранжева лінія */
+}
+
+.input-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.input-field {
+  position: relative;
+  margin-bottom: 2rem;
+  margin-top: 20px;
+}
+
+.input-field input {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  border-bottom: 2px solid rgba(69, 92, 108, 0.4);;
+  border-radius: 0;
+  width: 100%;
+  
+}
+
+.input-field label {
+  text-align: left;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  color: rgba(69, 92, 108, 0.4);
+  transform: translateY(-50%);
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.input-field input:valid+label {
+  top: 0px;
+  font-size: 1rem;
+}
+
+.input-field input:focus+label {
+  top: -10px;
+  font-size: 0.8rem;
+}
