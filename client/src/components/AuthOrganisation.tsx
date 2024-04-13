@@ -14,14 +14,9 @@ function AuthOrganisation() {
 
 
     const handleSubmit = async () => {
-<<<<<<< HEAD
         await Axios.post("http://localhost:3001/addorganisation", {
             fullName: fullName,
             phoneNumber: phoneNumber,
-=======
-        const response = await Axios.post("http://localhost:3001/addorganisation", {
-            name: name,
->>>>>>> 1e0bb4ab57cf8b389289a30f8e16929cdbda3680
             password: password,
             email: email,
         });
@@ -45,7 +40,7 @@ function AuthOrganisation() {
                 <div className="auth-image-box">
                     <img
                         className="auth-logo-img"
-                        src="../../public/logo.png"
+                        src="logo.svg"
                     />
                     <label>Платформа для допомоги</label>
                 </div>
