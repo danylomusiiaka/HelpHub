@@ -142,7 +142,7 @@ function AuthPage() {
                                     src="../../public/Vectorupload.svg"
                                 />
                             </div>
-                            <div className="radio">
+                            <div className="radio-container">
                                 <label>
                                     <input
                                         type="radio"
