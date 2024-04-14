@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Axios from "axios";
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/form.css";
 
 function LoginOrganisation() {
@@ -15,38 +15,36 @@ function LoginOrganisation() {
             email: email,
             password: password,
         });
-        console.log(response)
+        localStorage.setItem("isLoggedIn", "true");
+        console.log(response);
         if (response.status === 200) {
             const token = response.data.accessToken;
             localStorage.setItem("token", token);
-            navigate("/")
+            navigate("/");
         } else console.log("Something went wrong");
     };
 
-
-    const isOrganisationPage = location.pathname === '/loginorganisation';
-
+    const isOrganisationPage = location.pathname === "/loginorganisation";
 
     return (
         <div className="auth-container">
             <div className="swap-container">
-                <Link to='/login'>
-                    <button className='swap-button'>
-                        Приватна особа
-                    </button>
+                <Link to="/login">
+                    <button className="swap-button">Приватна особа</button>
                 </Link>
-                <Link to='/loginorganisation'>
-                    <button className={`swap-button ${isOrganisationPage ? 'active' : ''}`}>
+                <Link to="/loginorganisation">
+                    <button
+                        className={`swap-button ${
+                            isOrganisationPage ? "active" : ""
+                        }`}
+                    >
                         Волонтерська організація
                     </button>
                 </Link>
             </div>
             <div className="logo-form-container">
                 <div className="auth-image-box">
-                    <img
-                        className="auth-logo-img"
-                        src="logo.png"
-                    />
+                    <img className="auth-logo-img" src="logo.png" />
                     <label>Платформа для допомоги</label>
                 </div>
                 <div className="input-form login">
@@ -73,7 +71,9 @@ function LoginOrganisation() {
                     </div>
                     <br />
                     <div className="auth-button-container">
-                        <Link to="/"><img src="left-arrow.png" className="left-arrow" /></Link>
+                        <Link to="/">
+                            <img src="left-arrow.png" className="left-arrow" />
+                        </Link>
                         <button
                             className="auth-submit-button"
                             onClick={handleSubmit}
