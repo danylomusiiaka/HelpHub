@@ -83,7 +83,6 @@ const MyRequests = () => {
                         onClick={() => handleAddIconClick()}
                     ></img>
                 </div>
-                {loadRequests()}
             </div>
         </div>
     );
