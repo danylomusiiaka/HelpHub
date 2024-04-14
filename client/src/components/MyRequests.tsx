@@ -1,5 +1,5 @@
-import Header from "./Header";
 import MyRequestsStyle from "../styles/MyRequests.module.css";
+import HeaderLogined from './HeaderLogined'
 import CreateMyRequest from "./CreateMyRequest";
 import { useState } from "react";
 
@@ -78,7 +78,7 @@ const MyRequests = () => {
 
     return (
         <div>
-            <Header />
+            <HeaderLogined />
 
             <div className={MyRequestsStyle.modalWindowContainer}>
                 {showCreateRequest && (
