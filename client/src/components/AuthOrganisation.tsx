@@ -14,12 +14,15 @@ function AuthOrganisation() {
     const isOrganizationPage = location.pathname === "/authorganisation";
 
     const handleSubmit = async () => {
-        await Axios.post("http://localhost:3001/addorganisation", {
-            fullName: fullName,
-            phoneNumber: phoneNumber,
-            password: password,
-            email: email,
-        });
+        try {
+            await Axios.post("http://localhost:3001/addorganisation", {
+                fullName: fullName,
+                phoneNumber: phoneNumber,
+                password: password,
+                email: email,
+            });
+            localStorage.setItem("name", fullName);
+        } catch (error) {}
     };
 
     return (
@@ -40,10 +43,7 @@ function AuthOrganisation() {
             </div>
             <div className="logo-form-container">
                 <div className="auth-image-box">
-                    <img
-                        className="auth-logo-img"
-                        src="logo.png"
-                    />
+                    <img className="auth-logo-img" src="logo.png" />
                     <label>Платформа для допомоги</label>
                 </div>
                 {!pressedContinue ? (
