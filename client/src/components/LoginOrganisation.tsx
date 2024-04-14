@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Axios from "axios";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import "../styles/form.css";
 
 function LoginOrganisation() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const navigate = useNavigate();
     const handleSubmit = async () => {
         const response = await Axios.post("http://localhost:3001/login", {
             headers: {
@@ -19,6 +19,7 @@ function LoginOrganisation() {
         if (response.status === 200) {
             const token = response.data.accessToken;
             localStorage.setItem("token", token);
+            navigate("/")
         } else console.log("Something went wrong");
     };
 
