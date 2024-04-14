@@ -1,11 +1,13 @@
-import { Link } from 'react-router-dom'
-import '../styles/header.css'
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/header.css";
 
 function Header() {
+    const navigate = useNavigate();
+
     return (
         <header>
-            <div className='links'>
-                <Link to='/'>
+            <div className="links">
+                <Link to="/">
                     <img src="logo.png" alt="logo" />
                 </Link>
                 <a href="#section2">Мої запити</a>
@@ -14,19 +16,25 @@ function Header() {
                 <a href="#footer">Допомога</a>
             </div>
             <div className="profile-popup">
-                <Link to='/profile'>
-                    <img src="profile.svg" style={{ width: '40px' }} />
+                <Link to="/profile">
+                    <img src="profile.svg" style={{ width: "40px" }} />
                 </Link>
                 <div className="popup-content">
                     <div className="verified-info">
                         <img src="verified.svg" alt="" />
                         <p>Верифіковано</p>
                     </div>
-                    <button>Вихід</button>
+                    <button
+                        onClick={() => {
+                            localStorage.setItem("isLogined", "false");
+                            navigate("/");
+                        }}
+                    >
+                        Вихід
+                    </button>
                 </div>
-
             </div>
         </header>
-    )
+    );
 }
 export default Header;

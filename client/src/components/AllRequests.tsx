@@ -5,7 +5,7 @@ import CreateMyRequest from "./CreateMyRequest";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const MyRequests = () => {
+const AllRequests = () => {
     const [data, setData] = useState<any>([]);
     const [showCreateRequest, setShowCreateRequest] = useState(false);
     const isLogined = localStorage.getItem("isLogined");
@@ -17,12 +17,7 @@ const MyRequests = () => {
                     "http://localhost:3001/volunteer"
                 );
                 const requestData: [{ name: string }] = await response.data;
-
-                const data = requestData.filter(({ organisation_name }) => {
-                    return organisation_name === localStorage.getItem("name");
-                });
-                console.log("Filtered");
-                setData(data);
+                setData(requestData);
             } catch (error) {
                 console.error("Error loading requests:", error);
             }
@@ -34,20 +29,6 @@ const MyRequests = () => {
         setShowCreateRequest(true);
     };
 
-    const deleteRequest = async (name, index) => {
-        try {
-            await axios.delete("http://localhost:3001/delete-post", { data: { name } });
-            const newData = [...data];
-            newData.splice(index, 1);
-            setData(newData);
-            console.log("Request deleted successfully");
-        } catch (error) {
-            console.error("Error deleting request:", error);
-        }
-    };
-
-
-
     const loadRequests = () => {
         return data.map((request, index) => (
             <div key={index} className={MyRequestsStyle.request}>
@@ -58,9 +39,6 @@ const MyRequests = () => {
                         src="../../public/edit.svg"
                         alt="edit svg"
                     />
-                    <button className="garbage-button" onClick={() => deleteRequest(request.name,index)} >
-                        <img src="garbage-bin.svg" />
-                    </button>
                 </h3>
                 <p className={MyRequestsStyle.description}>
                     <strong>Опис: </strong>
@@ -78,6 +56,9 @@ const MyRequests = () => {
                     <strong>Тип допомоги: </strong>
                     {request.recipient_criteria}
                 </p>
+                <button className={MyRequestsStyle.respondButton}>
+                    Відгукнутися
+                </button>
             </div>
         ));
     };
@@ -90,15 +71,12 @@ const MyRequests = () => {
                 {showCreateRequest && (
                     <CreateMyRequest
                         setShowCreateRequest={setShowCreateRequest}
-                        data={data}
-                        setData={setData}
                     />
                 )}
             </div>
-
             <div className={MyRequestsStyle.container}>
                 <div className={MyRequestsStyle.fluidContainer}>
-                    <h2 className={MyRequestsStyle.pageName}>Мої запити</h2>
+                    <h2 className={MyRequestsStyle.pageName}>Всі запити</h2>
                     <img
                         className={MyRequestsStyle.addIcon}
                         src="./addIcon.svg"
@@ -107,8 +85,9 @@ const MyRequests = () => {
                 </div>
                 {loadRequests()}
             </div>
+            {loadRequests()}
         </div>
     );
 };
 
-export default MyRequests;
+export default AllRequests;
