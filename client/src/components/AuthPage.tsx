@@ -1,30 +1,30 @@
 import { useState } from "react";
-import Axios from "axios";
+import axios from "axios";
 import "../styles/form.css";
 import { Link } from "react-router-dom";
 
 function AuthPage() {
-    const [fullName, setFullName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-
-    const isPrivatePage = location.pathname === "/auth";
-    const [pressedContinue, setPressedContinue] = useState(false);
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [docs, setDocs] = useState<string | ArrayBuffer | null>(null);
+  const isPrivatePage = location.pathname === "/auth";
+  const [pressedContinue, setPressedContinue] = useState(false);
 
   const handleSubmit = async () => {
-        try {
-        await Axios.post("http://localhost:3001/adduser", {
-          fullName: fullName,
-          phoneNumber: phoneNumber,
-          password: password,
-          email: email,
-      file_base_64: docs,
-        });
-        } catch (error) {
-            localStorage.setItem("name", fullName);
-        }
+    try {
+      await axios.post("http://localhost:3001/adduser", {
+        fullName: fullName,
+        phoneNumber: phoneNumber,
+        password: password,
+        email: email,
+        file_base_64: docs,
+      });
+    } catch (error) {
+      localStorage.setItem("name", fullName);
+    }
   };
 
   const encodeFileToBase64 = (file: File) => {
@@ -111,7 +111,9 @@ function AuthPage() {
             </div>
             <br />
             <div className="auth-button-container">
-                            <Link to="/"><img src="left-arrow.png" className="left-arrow" /></Link>
+              <Link to="/">
+                <img src="left-arrow.png" className="left-arrow" />
+              </Link>
               <button
                 className="auth-submit-button"
                 onClick={() => setPressedContinue(true)}
@@ -165,43 +167,39 @@ function AuthPage() {
                 <br />
               </div>
 
-                            <div className="input-file-field">
-                                <input
-                                    name="secondFile"
-                                    className="auth-file-input"
-                                    type="file"
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                                <label
-                                    htmlFor="secondFile"
-                                    className="input-file-label"
-                                >
-                                    Завантажити відповідний документ:
-                                </label>
-                                <img
-                                    className="upload-image"
-                                    src="../../public/Vectorupload.svg"
-                                />
-                            </div>
-                            <br />
-                                <div className="auth-button-container">
-                                    <button onClick={() => setPressedContinue(false)}
-                                        style={{ border: 'none', padding: '0', outline: 'none' }}>
-                                        <img src="left-arrow.png" className="left-arrow" />
-                                    </button>
-                                    <button
-                                        className="auth-submit-button"
-                                        onClick={handleSubmit}
-                                    >
-                                        Зареєструватися
-                                    </button>
-                                </div>
-                        </div>
-                    </div>
-                )}
+              <div className="input-file-field">
+                <input
+                  name="secondFile"
+                  className="auth-file-input"
+                  type="file"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <label htmlFor="secondFile" className="input-file-label">
+                  Завантажити відповідний документ:
+                </label>
+                <img
+                  className="upload-image"
+                  src="../../public/Vectorupload.svg"
+                />
+              </div>
+              <br />
+              <div className="auth-button-container">
+                <button
+                  onClick={() => setPressedContinue(false)}
+                  style={{ border: "none", padding: "0", outline: "none" }}
+                >
+                  <img src="left-arrow.png" className="left-arrow" />
+                </button>
+                <button className="auth-submit-button" onClick={handleSubmit}>
+                  Зареєструватися
+                </button>
+              </div>
             </div>
-        </div>
-    );
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default AuthPage;
