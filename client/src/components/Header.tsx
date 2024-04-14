@@ -6,7 +6,7 @@ function Header() {
         <header>
             <div className='links'>
                 <Link to='/'>
-                    <img src="logo.svg" alt="logo" />
+                    <img src="logo.png" alt="logo" />
                 </Link>
                 <a href="">Про проєкт</a>
                 <a href="">Наші цілі</a>

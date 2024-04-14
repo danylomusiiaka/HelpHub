@@ -120,6 +120,10 @@ h2 {
     margin: 20px 0;
 }
 
+.login{
+    padding-top: 100px;
+}
+
 .input-file-label {
     padding-bottom: 10px;
     width: 100%;

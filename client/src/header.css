@@ -1,5 +1,4 @@
 header {
-    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -8,9 +7,10 @@ header {
     align-items: center;
     padding: 1.4rem 2rem;
     color: #fff;
+    background-color: #262626;
 }
 
-img {
+header img {
     display: flex;
     align-items: center;
     width: 130px;
