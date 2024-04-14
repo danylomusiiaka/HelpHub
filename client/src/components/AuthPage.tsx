@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Axios from "axios";
-import "../form.css";
+import "../styles/form.css";
 import { Link } from "react-router-dom";
 
 function AuthPage() {

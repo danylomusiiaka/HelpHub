@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Axios from "axios";
 import { Link } from 'react-router-dom'
-import "../form.css";
+import "../styles/form.css";
 
 function LoginPage() {
     const [email, setEmail] = useState("");

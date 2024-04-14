@@ -1,4 +1,4 @@
-import "./index.css";
+import "./styles/index.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AuthPage from "./components/AuthPage";
 import MainPage from "./components/MainPage";

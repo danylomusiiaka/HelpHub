@@ -1,5 +1,5 @@
 import Header from './Header'
-import '../welcomepage.css'
+import '../styles/welcomepage.css'
 import Footer from './Footer'
 
 function MainPage() {
