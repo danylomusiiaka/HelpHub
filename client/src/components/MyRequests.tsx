@@ -1,3 +1,4 @@
+import HeaderLogined from "./HeaderLogined";
 import Header from "./Header";
 import MyRequestsStyle from "../styles/MyRequests.module.css";
 import CreateMyRequest from "./CreateMyRequest";
@@ -7,17 +8,20 @@ import axios from "axios";
 const MyRequests = () => {
     const [data, setData] = useState<any>([]);
     const [showCreateRequest, setShowCreateRequest] = useState(false);
+    const isLogined = localStorage.getItem("isLogined");
 
     useEffect(() => {
         const loadMyRequests = async () => {
             try {
-                const response = await axios.get("http://localhost:3001/volunteer");
+                const response = await axios.get(
+                    "http://localhost:3001/volunteer"
+                );
                 const requestData: [{ name: string }] = await response.data;
 
                 const data = requestData.filter(({ organisation_name }) => {
                     return organisation_name === localStorage.getItem("name");
                 });
-                console.log("Filtered")
+                console.log("Filtered");
                 setData(data);
             } catch (error) {
                 console.error("Error loading requests:", error);
@@ -57,14 +61,16 @@ const MyRequests = () => {
                     <strong>Тип допомоги: </strong>
                     {request.recipient_criteria}
                 </p>
-                <button className={MyRequestsStyle.respondButton}>Відгукнутися</button>
+                <button className={MyRequestsStyle.respondButton}>
+                    Відгукнутися
+                </button>
             </div>
         ));
     };
 
     return (
         <div>
-            <Header />
+            {isLogined === "true" ? <HeaderLogined /> : <Header />}
 
             <div className={MyRequestsStyle.modalWindowContainer}>
                 {showCreateRequest && (
