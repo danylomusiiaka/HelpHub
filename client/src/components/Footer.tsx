@@ -5,7 +5,7 @@ function Footer() {
         <footer id="footer">
             <div>
                 <img src="logo.png" alt="logo" />
-                <p>Розроблено командою С--</p>
+                <p>Розроблено командою С-- </p>
             </div>
             <div>
                 <h4>Наші соцмережі</h4>
