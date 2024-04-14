@@ -15,6 +15,7 @@ function LoginPage() {
             email: email,
             password: password,
         });
+        localStorage.setItem("isLoggedIn", "true");
         console.log(response);
         if (response.status === 200) {
             const token = response.data.accessToken;
