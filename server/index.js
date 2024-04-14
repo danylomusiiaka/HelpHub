@@ -75,9 +75,36 @@ const organisationSchema = new mongoose.Schema({
     required: true,
   },
 });
+const vacationsSchema = new mongoose.Schema({
+  company: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  place: {
+    type: String,
+    required: true,
+  },
+  salary: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  is_verified: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 const authModel = mongoose.model("users", authSchema);
 const organisationsModel = mongoose.model("organisations", organisationSchema);
+const vacationsModel = mongoose.model("parsed_jobs", vacationsSchema);
 
 async function saveUserData(request, response, userModel) {
   const saltRounds = 10;
@@ -127,7 +154,11 @@ app.get("/volunteer", getAllVolunteerPosts);
 
 app.put("/admin/verify-volunteer", verifyVolunteer);
 app.put("/admin/verify-job", () => null);
-
+app.get("/free-vacations", async (request, response) => {
+  const vacations = await vacationsModel.find();
+  console.log(vacations);
+  response.status(200).json({ message: "Something happened"})
+});
 //задання порту для серверу
 app.listen(3001, () => {
   console.log("server started on port 3001");
