@@ -30,7 +30,7 @@
 
 .request {
     display: grid;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
     grid-template-columns: 1fr 1fr;
     gap: 5px;
 
@@ -44,6 +44,9 @@
 .label {
     grid-row: 1;
     grid-column: 1;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid transparent;
 }
 .description {
     grid-row: 2;
@@ -55,15 +58,14 @@
     text-align: right;
 }
 .date {
-    grid-row: 3;
+    grid-row: 4;
     grid-column: 2;
     text-align: right;
 }
 .typeOfHelp {
     grid-row: 3;
-    grid-column: 1;
+    grid-column: 1 / span 2;
 }
-
 .modalWindowContainer {
     display: flex;
     width: 100%;
@@ -107,4 +109,29 @@
     height: 24px;
     width: 24px;
     cursor: pointer;
+}
+
+.respondButton {
+    width: 50%;
+    grid-row: 4;
+    grid-column: 1;
+    border-radius: 40px;
+    border: solid 1px #0d98fd;
+    background-color: #002037;
+    margin-bottom: 20px;
+}
+
+.respondButton:hover {
+    background-color: #0868ad;
+    border-color: #2ea7ff;
+}
+
+.editSvg {
+    margin-left: 20px;
+    height: 24px;
+    width: 24px;
+}
+.label:hover {
+    cursor: pointer;
+    border-bottom: 2px solid #76bdf1b0;
 }

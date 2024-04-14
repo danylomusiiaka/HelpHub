@@ -45,23 +45,33 @@ const MyRequests = () => {
     const loadRequests = () => {
         return mockData.map((request, index) => (
             <div key={index} className={MyRequestsStyle.request}>
-                <h3 className={MyRequestsStyle.label}>{request.label}</h3>
+                <h3 className={MyRequestsStyle.label}>
+                    {request.label}
+                    <img
+                        className={MyRequestsStyle.editSvg}
+                        src="../../public/edit.svg"
+                        alt="edit svg"
+                    />
+                </h3>
                 <p className={MyRequestsStyle.description}>
-                    <strong>Description: </strong>
+                    <strong>Опис: </strong>
                     {request.description}
                 </p>
                 <p className={MyRequestsStyle.date}>
-                    <strong>Date: </strong>
+                    <strong>Дата публікації: </strong>
                     {request.date}
                 </p>
                 <p className={MyRequestsStyle.owner}>
-                    <strong>Owner: </strong>
+                    <strong> </strong>
                     {request.owner}
                 </p>
                 <p className={MyRequestsStyle.typeOfHelp}>
-                    <strong>Type of Help: </strong>
+                    <strong>Тип допомоги: </strong>
                     {request.typeOfHelp}
                 </p>
+                <button className={MyRequestsStyle.respondButton}>
+                    Відгукнутися
+                </button>
             </div>
         ));
     };
