@@ -38,7 +38,7 @@ const addVolunteerPost = async (request, response) => {
     date,
     status,
   } = request.body;
-  console.log(request.body)
+  console.log(request.body);
   const post = new postModel({
     name,
     description,
@@ -47,7 +47,7 @@ const addVolunteerPost = async (request, response) => {
     status,
     date,
   });
-
+  
   try {
     await post.save();
     return response.status(201).json({ message: "Post created" });

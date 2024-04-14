@@ -13,12 +13,14 @@ function AuthOrganisation() {
     const [docs, setDocs] = useState<string | ArrayBuffer | null>(null);
     const isOrganizationPage = location.pathname === "/authorganisation";
     const navigate = useNavigate();
+    
     useEffect(() => {
         console.log("Docs are", docs);
     }, [docs]);
+
     const handleSubmit = async () => {
         await Axios.post("http://localhost:3001/addorganisation", {
-            fullName: fullName,
+            name: fullName,
             phoneNumber: phoneNumber,
             password: password,
             email: email,

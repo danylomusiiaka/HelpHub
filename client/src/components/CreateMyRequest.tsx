@@ -12,7 +12,7 @@ const CreateMyRequest = ({ setShowCreateRequest }) => {
         try {
             const date = new Date().toISOString().split("T")[0];
 
-            await axios.post("/volunteer", {
+            await axios.post("http://localhost:3001/volunteer", {
                 name: requestName,
                 description: requestDescription,
                 organisation_name: localStorage.getItem("name"),
