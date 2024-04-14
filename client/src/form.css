@@ -123,6 +123,10 @@ h2 {
     margin: 22px 0;
 }
 
+.login{
+    padding-top: 100px;
+}
+
 .input-file-label {
     left: 0;
     text-align: left;

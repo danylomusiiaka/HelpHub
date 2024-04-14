@@ -44,12 +44,12 @@ function LoginOrganisation() {
                 <div className="auth-image-box">
                     <img
                         className="auth-logo-img"
-                        src="logo.svg"
+                        src="logo.png"
                     />
                     <label>Платформа для допомоги</label>
                 </div>
-                <div className="input-form">
-                    <h2 className="label login">Вхід</h2>
+                <div className="input-form login">
+                    <h2 className="label ">Вхід</h2>
                     <div className="input-field ">
                         <input
                             className="auth-input"

@@ -40,7 +40,10 @@ function AuthOrganisation() {
             </div>
             <div className="logo-form-container">
                 <div className="auth-image-box">
-                    <img className="auth-logo-img" src="logo.svg" />
+                    <img
+                        className="auth-logo-img"
+                        src="logo.png"
+                    />
                     <label>Платформа для допомоги</label>
                 </div>
                 {!pressedContinue ? (
