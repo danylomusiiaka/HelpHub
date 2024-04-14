@@ -6,6 +6,7 @@ import LoginPage from "./components/LoginPage";
 import AuthOrganisation from "./components/AuthOrganisation";
 import LoginOrganisation from "./components/LoginOrganisation";
 import MyRequests from "./components/MyRequests";
+import WorkPage from "./components/workPage";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                         element={<LoginOrganisation />}
                     />
                     <Route path="/my-requests" element={<MyRequests />} />
+                    <Route path="/vacations" element={<WorkPage />}></Route>
                 </Routes>
             </Router>
         </>

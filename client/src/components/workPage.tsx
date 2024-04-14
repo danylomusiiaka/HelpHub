@@ -76,12 +76,7 @@ const WorkPage = () => {
             </div>
             <div className={MyRequestsStyle.container}>
                 <div className={MyRequestsStyle.fluidContainer}>
-                    <h2 className={MyRequestsStyle.pageName}>Мої запити</h2>
-                    <img
-                        className={MyRequestsStyle.addIcon}
-                        src="./addIcon.svg"
-                        onClick={() => handleAddIconClick()}
-                    ></img>
+                    <h2 className={MyRequestsStyle.pageName}>Вакансії</h2>
                 </div>
                 {loadRequests()}
             </div>
