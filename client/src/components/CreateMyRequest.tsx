@@ -2,7 +2,7 @@ import { useState } from "react";
 import MyRequestsStyles from "../styles/MyRequests.module.css";
 import axios from "axios";
 
-const CreateMyRequest = ({ setShowCreateRequest }) => {
+const CreateMyRequest = ({ setShowCreateRequest, data, setData }) => {
     const [requestName, setRequestName] = useState("");
     const [requestDescription, setRequestDescription] = useState("");
     const [requestGoal, setRequestGoal] = useState("");
@@ -11,6 +11,14 @@ const CreateMyRequest = ({ setShowCreateRequest }) => {
     const submitHandler = async () => {
         try {
             const date = new Date().toISOString().split("T")[0];
+            const NewRequest = {
+                name: requestName,
+                description: requestDescription,
+                organisation_name: localStorage.getItem("name"),
+                recipient_criteria: requestToGroup,
+                status: requestGoal,
+                date: date,
+            }
 
             await axios.post("http://localhost:3001/volunteer", {
                 name: requestName,
@@ -20,7 +28,10 @@ const CreateMyRequest = ({ setShowCreateRequest }) => {
                 status: requestGoal,
                 date: date,
             });
+            const newData = [NewRequest, ...data];
+            setData(newData);
             console.log("Successfully published");
+            setShowCreateRequest(false);
         } catch (error) {
             console.log(error);
         }

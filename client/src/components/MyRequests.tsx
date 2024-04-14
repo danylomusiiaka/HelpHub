@@ -34,6 +34,20 @@ const MyRequests = () => {
         setShowCreateRequest(true);
     };
 
+    const deleteRequest = async (name, index) => {
+        try {
+            await axios.delete("http://localhost:3001/delete-post", { data: { name } });
+            const newData = [...data];
+            newData.splice(index, 1);
+            setData(newData);
+            console.log("Request deleted successfully");
+        } catch (error) {
+            console.error("Error deleting request:", error);
+        }
+    };
+
+
+
     const loadRequests = () => {
         return data.map((request, index) => (
             <div key={index} className={MyRequestsStyle.request}>
@@ -44,6 +58,9 @@ const MyRequests = () => {
                         src="../../public/edit.svg"
                         alt="edit svg"
                     />
+                    <button className="garbage-button" onClick={() => deleteRequest(request.name,index)} >
+                        <img src="garbage-bin.svg" />
+                    </button>
                 </h3>
                 <p className={MyRequestsStyle.description}>
                     <strong>Опис: </strong>
@@ -61,9 +78,6 @@ const MyRequests = () => {
                     <strong>Тип допомоги: </strong>
                     {request.recipient_criteria}
                 </p>
-                <button className={MyRequestsStyle.respondButton}>
-                    Відгукнутися
-                </button>
             </div>
         ));
     };
@@ -76,9 +90,12 @@ const MyRequests = () => {
                 {showCreateRequest && (
                     <CreateMyRequest
                         setShowCreateRequest={setShowCreateRequest}
+                        data={data}
+                        setData={setData}
                     />
                 )}
             </div>
+
             <div className={MyRequestsStyle.container}>
                 <div className={MyRequestsStyle.fluidContainer}>
                     <h2 className={MyRequestsStyle.pageName}>Мої запити</h2>
@@ -90,7 +107,6 @@ const MyRequests = () => {
                 </div>
                 {loadRequests()}
             </div>
-            {loadRequests()}
         </div>
     );
 };
