@@ -1,52 +1,39 @@
 import Header from "./Header";
 import MyRequestsStyle from "../styles/MyRequests.module.css";
 import CreateMyRequest from "./CreateMyRequest";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const MyRequests = () => {
-    const mockData = [
-        {
-            label: "Grocery Shopping Assistance",
-            description: "Help needed to pick up groceries from the store.",
-            date: "2024-04-15",
-            owner: "Jane Doe",
-            typeOfHelp: "Errand",
-        },
-        {
-            label: "Tutoring for Math",
-            description: "Seeking a tutor to assist with algebra problems.",
-            date: "2024-04-16",
-            owner: "John Smith",
-            typeOfHelp: "Education",
-        },
-        {
-            label: "Dog Walking",
-            description:
-                "Looking for someone to walk my dog in the afternoons.",
-            date: "2024-04-17",
-            owner: "Emily Johnson",
-            typeOfHelp: "Pet Care",
-        },
-        {
-            label: "Tech Support",
-            description: "Require assistance setting up a new printer.",
-            date: "2024-04-18",
-            owner: "David Williams",
-            typeOfHelp: "Technical",
-        },
-    ];
-
+    const [data, setData] = useState([]);
     const [showCreateRequest, setShowCreateRequest] = useState(false);
+
+    useEffect(() => {
+        const loadMyRequests = async () => {
+            try {
+                const response = await axios.get(
+                    "http://localhost:3001/volunteer"
+                );
+                const requestData = await response.data;
+                console.log(requestData);
+                setData(requestData);
+            } catch (error) {
+                console.error("Error loading requests:", error);
+            }
+        };
+
+        loadMyRequests();
+    }, []);
 
     const handleAddIconClick = () => {
         setShowCreateRequest(true);
     };
 
     const loadRequests = () => {
-        return mockData.map((request, index) => (
+        return data.map((request, index) => (
             <div key={index} className={MyRequestsStyle.request}>
                 <h3 className={MyRequestsStyle.label}>
-                    {request.label}
+                    {data.name}
                     <img
                         className={MyRequestsStyle.editSvg}
                         src="../../public/edit.svg"
@@ -63,11 +50,11 @@ const MyRequests = () => {
                 </p>
                 <p className={MyRequestsStyle.owner}>
                     <strong> </strong>
-                    {request.owner}
+                    {request.organisation_name}
                 </p>
                 <p className={MyRequestsStyle.typeOfHelp}>
                     <strong>Тип допомоги: </strong>
-                    {request.typeOfHelp}
+                    {request.recipient_criteria}
                 </p>
                 <button className={MyRequestsStyle.respondButton}>
                     Відгукнутися

@@ -73,11 +73,12 @@ function LoginOrganisation() {
                     </div>
                     <br />
                     <div className="auth-button-container">
+                        <Link to="/"><img src="left-arrow.png" className="left-arrow" /></Link>
                         <button
                             className="auth-submit-button"
                             onClick={handleSubmit}
                         >
-                            Далі
+                            Увійти
                         </button>
                     </div>
                 </div>
