@@ -7,7 +7,11 @@ const { corsMiddleware } = require("./cors.js");
 const bcrypt = require("bcrypt");
 
 const { verifyVolunteer } = require("./volunteer/verify.js");
-const { addVolunteerPost,getAllVolunteerPosts } = require("./volunteer/post.js")
+const {
+  addVolunteerPost,
+  getAllVolunteerPosts,
+} = require("./volunteer/post.js");
+
 // підключення й ініціалізація бази даних
 mongoose.connect(
   "mongodb+srv://admin:3FTlj80Nx9mPMcL7@petprojects.9spehpo.mongodb.net/?retryWrites=true&w=majority&appName=PetProjects"
@@ -122,7 +126,7 @@ app.post("/volunteer", addVolunteerPost);
 app.get("/volunteer", getAllVolunteerPosts);
 
 app.put("/admin/verify-volunteer", verifyVolunteer);
-app.put("/admin/verify-job", () => null)
+app.put("/admin/verify-job", () => null);
 
 //задання порту для серверу
 app.listen(3001, () => {

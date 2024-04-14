@@ -13,9 +13,7 @@ function AuthOrganisation() {
   const [docs, setDocs] = useState<string | ArrayBuffer | null>(null);
   const isOrganizationPage = location.pathname === "/authorganisation";
   const navigate = useNavigate();
-  useEffect(() => {
-    console.log("Docs are", docs);
-  }, [docs]);
+
   const handleSubmit = async () => {
     await Axios.post("http://localhost:3001/addorganisation", {
       fullName: fullName,
@@ -25,11 +23,12 @@ function AuthOrganisation() {
     });
     return navigate("/loginorganisation");
   };
+
   const encodeFileToBase64 = (file: File) => {
     var reader = new FileReader();
     reader.onload = function (event) {
       const base64String = event.target.result;
-      console.log(base64String)
+      console.log(base64String);
       setDocs(base64String);
     };
     reader.readAsDataURL(file);

@@ -14,11 +14,11 @@ const postSchema = mongoose.Schema({
     required: true,
   },
   recipient_criteria: {
-    type: [String], // "Впо", "Мають 2-х та більше дітей"
+    type: String, // "Впо"
     required: true,
   },
-  money_help: {
-    type: [String], // "20 000 грн", "Разова допомога"
+  status: {
+    type: String, // "Я надаю роботу",
     required: true,
   },
   date: {
@@ -35,16 +35,16 @@ const addVolunteerPost = async (request, response) => {
     description,
     organisation_name,
     recipient_criteria,
-    money_help,
     date,
+    status,
   } = request.body;
-
+  console.log(request.body)
   const post = new postModel({
     name,
     description,
     organisation_name,
     recipient_criteria,
-    money_help,
+    status,
     date,
   });
 
@@ -64,5 +64,5 @@ const getAllVolunteerPosts = async (request, response) => {
 
 module.exports = {
   addVolunteerPost,
-  getAllVolunteerPosts
+  getAllVolunteerPosts,
 };
