@@ -66,20 +66,23 @@ const MyRequests = () => {
     return (
         <div>
             <HeaderLogined />
-
-      <div className={MyRequestsStyle.modalWindowContainer}>
-        {showCreateRequest && (
-          <CreateMyRequest setShowCreateRequest={setShowCreateRequest} />
-        )}
-      </div>
-      <div className={MyRequestsStyle.container}>
-        <div className={MyRequestsStyle.fluidContainer}>
-          <h2 className={MyRequestsStyle.pageName}>Мої запити</h2>
-          <img
-            className={MyRequestsStyle.addIcon}
-            src="./addIcon.svg"
-            onClick={() => handleAddIconClick()}
-          ></img>
+            <div className={MyRequestsStyle.modalWindowContainer}>
+                {showCreateRequest && (
+                    <CreateMyRequest
+                        setShowCreateRequest={setShowCreateRequest}
+                    />
+                )}
+            </div>
+            <div className={MyRequestsStyle.container}>
+                <div className={MyRequestsStyle.fluidContainer}>
+                    <h2 className={MyRequestsStyle.pageName}>Мої запити</h2>
+                    <img
+                        className={MyRequestsStyle.addIcon}
+                        src="./addIcon.svg"
+                        onClick={() => handleAddIconClick()}
+                    ></img>
+                </div>
+            </div>
         </div>
         {loadRequests()}
       </div>
