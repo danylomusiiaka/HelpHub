@@ -70,9 +70,12 @@ const MyRequests = () => {
                 {showCreateRequest && (
                     <CreateMyRequest
                         setShowCreateRequest={setShowCreateRequest}
+                        data={data}
+                        setData={setData}
                     />
                 )}
             </div>
+
             <div className={MyRequestsStyle.container}>
                 <div className={MyRequestsStyle.fluidContainer}>
                     <h2 className={MyRequestsStyle.pageName}>Мої запити</h2>
@@ -82,8 +85,8 @@ const MyRequests = () => {
                         onClick={() => handleAddIconClick()}
                     ></img>
                 </div>
+                {loadRequests()}
             </div>
-            {loadRequests()}
         </div>
 
     );
