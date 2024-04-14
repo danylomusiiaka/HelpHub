@@ -95,8 +95,8 @@ async function saveUserData(request, response, userModel) {
   response.send("200 Success");
 }
 
-app.post("/adduser", async (req, res) => {
-  await saveUserData(req, res, authModel);
+app.post("/adduser", async (request, response) => {
+  await saveUserData(request, response, authModel);
 });
 
 app.post("/addorganisation", async (request, response) => {
