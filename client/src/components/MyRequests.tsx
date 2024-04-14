@@ -14,7 +14,7 @@ const MyRequests = () => {
                 const response = await axios.get(
                     "http://localhost:3001/volunteer"
                 );
-                const requestData = await response.json();
+                const requestData = await response.data;
                 console.log(requestData);
                 setData(requestData);
             } catch (error) {
@@ -33,7 +33,7 @@ const MyRequests = () => {
         return data.map((request, index) => (
             <div key={index} className={MyRequestsStyle.request}>
                 <h3 className={MyRequestsStyle.label}>
-                    {data.label}
+                    {data.name}
                     <img
                         className={MyRequestsStyle.editSvg}
                         src="../../public/edit.svg"
@@ -50,11 +50,11 @@ const MyRequests = () => {
                 </p>
                 <p className={MyRequestsStyle.owner}>
                     <strong> </strong>
-                    {request.owner}
+                    {request.organisation_name}
                 </p>
                 <p className={MyRequestsStyle.typeOfHelp}>
                     <strong>Тип допомоги: </strong>
-                    {request.typeOfHelp}
+                    {request.recipient_criteria}
                 </p>
                 <button className={MyRequestsStyle.respondButton}>
                     Відгукнутися

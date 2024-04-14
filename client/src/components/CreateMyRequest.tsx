@@ -20,6 +20,7 @@ const CreateMyRequest = ({ setShowCreateRequest }) => {
                 status: requestGoal,
                 date: date,
             });
+            console.log("Successfully published");
         } catch (error) {
             console.log(error);
         }
