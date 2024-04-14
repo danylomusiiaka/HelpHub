@@ -4,25 +4,24 @@ import CreateMyRequest from "./CreateMyRequest";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const MyRequests = () => {
-    const [data, setData] = useState<any>([]);
+const WorkPage = () => {
+    const [data, setData] = useState([]);
     const [showCreateRequest, setShowCreateRequest] = useState(false);
 
     useEffect(() => {
         const loadMyRequests = async () => {
             try {
-                const response = await axios.get("http://localhost:3001/volunteer");
-                const requestData: [{ name: string }] = await response.data;
-
-                const data = requestData.filter(({ organisation_name }) => {
-                    return organisation_name === localStorage.getItem("name");
-                });
-                console.log("Filtered")
-                setData(data);
+                const response = await axios.get(
+                    "http://localhost:3001/freevacations"
+                );
+                const requestData = await response.data;
+                console.log(requestData);
+                setData(requestData);
             } catch (error) {
                 console.error("Error loading requests:", error);
             }
         };
+
         loadMyRequests();
     }, []);
 
@@ -34,7 +33,7 @@ const MyRequests = () => {
         return data.map((request, index) => (
             <div key={index} className={MyRequestsStyle.request}>
                 <h3 className={MyRequestsStyle.label}>
-                    {request.name}
+                    {data.name}
                     <img
                         className={MyRequestsStyle.editSvg}
                         src="../../public/edit.svg"
@@ -57,7 +56,9 @@ const MyRequests = () => {
                     <strong>Тип допомоги: </strong>
                     {request.recipient_criteria}
                 </p>
-                <button className={MyRequestsStyle.respondButton}>Відгукнутися</button>
+                <button className={MyRequestsStyle.respondButton}>
+                    Відгукнутися
+                </button>
             </div>
         ));
     };
@@ -75,18 +76,12 @@ const MyRequests = () => {
             </div>
             <div className={MyRequestsStyle.container}>
                 <div className={MyRequestsStyle.fluidContainer}>
-                    <h2 className={MyRequestsStyle.pageName}>Мої запити</h2>
-                    <img
-                        className={MyRequestsStyle.addIcon}
-                        src="./addIcon.svg"
-                        onClick={() => handleAddIconClick()}
-                    ></img>
+                    <h2 className={MyRequestsStyle.pageName}>Вакансії</h2>
                 </div>
                 {loadRequests()}
             </div>
-            {loadRequests()}
         </div>
     );
 };
 
-export default MyRequests;
+export default WorkPage;
