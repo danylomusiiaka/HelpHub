@@ -30,9 +30,8 @@ function AuthOrganisation() {
                 </Link>
                 <Link to="/authorganisation">
                     <button
-                        className={`swap-button ${
-                            isOrganizationPage ? "active" : ""
-                        }`}
+                        className={`swap-button ${isOrganizationPage ? "active" : ""
+                            }`}
                     >
                         Волонтерська організація
                     </button>
@@ -109,6 +108,7 @@ function AuthOrganisation() {
                         </div>
                         <br />
                         <div className="auth-button-container">
+                            <Link to="/"><img src="left-arrow.png" className="left-arrow" /></Link>
                             <button
                                 className="auth-submit-button"
                                 onClick={() => setPressedContinue(true)}
@@ -203,11 +203,15 @@ function AuthOrganisation() {
                                 </label>
                                 <img
                                     className="upload-image"
-                                    src="../../public/Vectorupload.svg"
+                                    src="Vectorupload.svg"
                                 />
                             </div>
                             <br />
                             <div className="auth-button-container">
+                                <button onClick={() => setPressedContinue(false)}
+                                    style={{ border: 'none', padding: '0', outline: 'none' }}>
+                                    <img src="left-arrow.png" className="left-arrow" />
+                                </button>
                                 <button
                                     className="auth-submit-button"
                                     onClick={handleSubmit}

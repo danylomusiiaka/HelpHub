@@ -11,7 +11,7 @@ function AuthPage() {
     const [phoneNumber, setPhoneNumber] = useState("");
 
     const isPrivatePage = location.pathname === "/auth";
-    const [pressedContinue, setPressedContinue] = useState(false);
+    var [pressedContinue, setPressedContinue] = useState(false);
 
     const handleSubmit = async () => {
         await Axios.post("http://localhost:3001/adduser", {
@@ -110,6 +110,7 @@ function AuthPage() {
                         </div>
                         <br />
                         <div className="auth-button-container">
+                            <Link to="/"><img src="left-arrow.png" className="left-arrow" /></Link>
                             <button
                                 className="auth-submit-button"
                                 onClick={() => setPressedContinue(true)}
@@ -200,14 +201,18 @@ function AuthPage() {
                                 />
                             </div>
                             <br />
-                            <div className="auth-button-container">
-                                <button
-                                    className="auth-submit-button"
-                                    onClick={handleSubmit}
-                                >
-                                    Зареєструватися
-                                </button>
-                            </div>
+                                <div className="auth-button-container">
+                                    <button onClick={() => setPressedContinue(false)}
+                                        style={{ border: 'none', padding: '0', outline: 'none' }}>
+                                        <img src="left-arrow.png" className="left-arrow" />
+                                    </button>
+                                    <button
+                                        className="auth-submit-button"
+                                        onClick={handleSubmit}
+                                    >
+                                        Зареєструватися
+                                    </button>
+                                </div>
                         </div>
                     </div>
                 )}
