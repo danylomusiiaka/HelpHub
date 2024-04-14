@@ -28,6 +28,7 @@ function AuthOrganisation() {
             file_base64: docs,
         });
         localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("name", name);
         return navigate("/loginorganisation");
     };
     const encodeFileToBase64 = (file: File) => {
