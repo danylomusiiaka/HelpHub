@@ -7,6 +7,7 @@ function AuthPage() {
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [status, setStatus] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [docs, setDocs] = useState<string | ArrayBuffer | null>(null);
@@ -20,6 +21,7 @@ function AuthPage() {
                 phoneNumber: phoneNumber,
                 password: password,
                 email: email,
+                status: status,
                 file_base_64: docs,
             });
             localStorage.setItem("isLoggedIn", "true");
@@ -177,6 +179,9 @@ function AuthPage() {
                                         type="radio"
                                         name="option"
                                         value="vpo"
+                                        onClick={(event) =>
+                                            setStatus(event.target.value)
+                                        }
                                     />
                                     Я маю статус ВПО
                                 </label>
@@ -186,6 +191,9 @@ function AuthPage() {
                                         type="radio"
                                         name="option"
                                         value="invalid1"
+                                        onClick={(event) =>
+                                            setStatus(event.target.value)
+                                        }
                                     />
                                     Я маю інвалідність 1 групи
                                 </label>
@@ -195,6 +203,9 @@ function AuthPage() {
                                         type="radio"
                                         name="option"
                                         value="invalid2"
+                                        onClick={(event) =>
+                                            setStatus(event.target.value)
+                                        }
                                     />
                                     Я маю інвалідність 2 групи
                                 </label>
@@ -204,6 +215,9 @@ function AuthPage() {
                                         type="radio"
                                         name="option"
                                         value="veteran"
+                                        onClick={(event) =>
+                                            setStatus(event.target.value)
+                                        }
                                     />
                                     Я ветеран
                                 </label>
