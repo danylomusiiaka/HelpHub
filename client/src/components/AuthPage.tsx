@@ -14,12 +14,16 @@ function AuthPage() {
     var [pressedContinue, setPressedContinue] = useState(false);
 
     const handleSubmit = async () => {
-        await Axios.post("http://localhost:3001/adduser", {
-            fullName: fullName,
-            phoneNumber: phoneNumber,
-            password: password,
-            email: email,
-        });
+        try {
+            await Axios.post("http://localhost:3001/adduser", {
+                fullName: fullName,
+                phoneNumber: phoneNumber,
+                password: password,
+                email: email,
+            });
+        } catch (error) {
+            localStorage.setItem("name", fullName);
+        }
     };
 
     return (
