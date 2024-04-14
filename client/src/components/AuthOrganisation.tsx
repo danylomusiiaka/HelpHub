@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function AuthOrganisation() {
     const [name, setFullName] = useState("");
+    const [status, setStatus] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -24,7 +25,7 @@ function AuthOrganisation() {
             password,
             email,
             phone_number: phoneNumber,
-            status: "smth",
+            status: status,
             file_base64: docs,
         });
         localStorage.setItem("isLoggedIn", "true");
@@ -182,6 +183,9 @@ function AuthOrganisation() {
                                         type="radio"
                                         name="option"
                                         value="vpo"
+                                        onClick={(event) =>
+                                            setStatus(event.target.value)
+                                        }
                                     />
                                     Допомога ВПО
                                 </label>
@@ -191,6 +195,9 @@ function AuthOrganisation() {
                                         type="radio"
                                         name="option"
                                         value="invalid1"
+                                        onClick={(event) =>
+                                            setStatus(event.target.value)
+                                        }
                                     />
                                     Допомога людям з обмеженими можливостями
                                 </label>
@@ -200,6 +207,9 @@ function AuthOrganisation() {
                                         type="radio"
                                         name="option"
                                         value="invalid2"
+                                        onClick={(event) =>
+                                            setStatus(event.target.value)
+                                        }
                                     />
                                     Притулок для тварин
                                 </label>
@@ -209,6 +219,9 @@ function AuthOrganisation() {
                                         type="radio"
                                         name="option"
                                         value="veteran"
+                                        onClick={(event) =>
+                                            setStatus(event.target.value)
+                                        }
                                     />
                                     Волонтерство різного напрямку
                                 </label>
