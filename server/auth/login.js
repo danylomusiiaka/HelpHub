@@ -22,8 +22,8 @@ const login = async (req, res) => {
             return res.status(401).json({ error: 'Invalid email or password' });
         }
 
-        const passwordMatch = await bcrypt.compare(password, user.password);
-        if (passwordMatch) {
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        if (isPasswordMatch) {
             const accessToken = generateAccessToken(user._id, 'user');
             return res.status(200).json({
                 message: 'Login successful',
