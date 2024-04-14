@@ -4,7 +4,7 @@ import CreateMyRequest from "./CreateMyRequest";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const MyRequests = () => {
+const WorkPage = () => {
     const [data, setData] = useState([]);
     const [showCreateRequest, setShowCreateRequest] = useState(false);
 
@@ -12,7 +12,7 @@ const MyRequests = () => {
         const loadMyRequests = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:3001/volunteer"
+                    "http://localhost:3001/freevacations"
                 );
                 const requestData = await response.data;
                 console.log(requestData);
@@ -89,4 +89,4 @@ const MyRequests = () => {
     );
 };
 
-export default MyRequests;
+export default WorkPage;
