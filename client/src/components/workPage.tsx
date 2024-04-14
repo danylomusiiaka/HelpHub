@@ -12,7 +12,7 @@ const WorkPage = () => {
         const loadMyRequests = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:3001/freevacations"
+                    "http://localhost:3001/free-vacations"
                 );
                 const requestData = await response.data;
                 console.log(requestData);
@@ -32,29 +32,18 @@ const WorkPage = () => {
     const loadRequests = () => {
         return data.map((request, index) => (
             <div key={index} className={MyRequestsStyle.request}>
-                <h3 className={MyRequestsStyle.label}>
-                    {data.name}
-                    <img
-                        className={MyRequestsStyle.editSvg}
-                        src="../../public/edit.svg"
-                        alt="edit svg"
-                    />
-                </h3>
+                <h3 className={MyRequestsStyle.label}>{request.title}</h3>
+                <p className={MyRequestsStyle.typeOfHelp}>
+                    <strong>Зарплата: </strong>
+                    {request.salary}
+                </p>
                 <p className={MyRequestsStyle.description}>
                     <strong>Опис: </strong>
                     {request.description}
                 </p>
-                <p className={MyRequestsStyle.date}>
-                    <strong>Дата публікації: </strong>
-                    {request.date}
-                </p>
                 <p className={MyRequestsStyle.owner}>
                     <strong> </strong>
-                    {request.organisation_name}
-                </p>
-                <p className={MyRequestsStyle.typeOfHelp}>
-                    <strong>Тип допомоги: </strong>
-                    {request.recipient_criteria}
+                    {request.company}
                 </p>
                 <button className={MyRequestsStyle.respondButton}>
                     Відгукнутися
