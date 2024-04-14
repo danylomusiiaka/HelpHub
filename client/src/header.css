@@ -8,6 +8,8 @@ header {
     align-items: center;
     padding: 1.4rem 2rem;
     color: #fff;
+    background-color: #1e1e1e;
+    z-index: 150;
 }
 
 img {
@@ -33,10 +35,9 @@ header button:hover {
     color: black;
 }
 
-.links{
+.links {
     display: flex;
     align-items: center;
-    
 }
 
 .links a {
@@ -50,4 +51,3 @@ header button:hover {
 .links a:hover {
     color: #535bf2;
 }
-
