@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import '../header.css'
+import '../styles/header.css'
 
 function Header() {
     return (
@@ -8,9 +8,9 @@ function Header() {
                 <Link to='/'>
                     <img src="logo.png" alt="logo" />
                 </Link>
-                <a href="">Про проєкт</a>
-                <a href="">Наші цілі</a>
-                <a href="">Підтримати</a>
+                <a href="#section2">Про проєкт</a>
+                <a href="#section3">Наші цілі</a>
+                <a href="#footer">Підтримати</a>
             </div>
             <div className='buttons'>
                 <Link to="/login">

@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Axios from "axios";
-import "../form.css";
-import { Link } from "react-router-dom";
+import "../styles/form.css";
+import { Link, useNavigate } from "react-router-dom";
 
 function AuthOrganisation() {
     const [fullName, setFullName] = useState("");
@@ -10,21 +10,30 @@ function AuthOrganisation() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [pressedContinue, setPressedContinue] = useState(false);
-
+    const [docs, setDocs] = useState<string | ArrayBuffer | null>(null);
     const isOrganizationPage = location.pathname === "/authorganisation";
-
+    const navigate = useNavigate();
+    useEffect(() => {
+        console.log("Docs are", docs);
+    }, [docs]);
     const handleSubmit = async () => {
-        try {
-            await Axios.post("http://localhost:3001/addorganisation", {
-                fullName: fullName,
-                phoneNumber: phoneNumber,
-                password: password,
-                email: email,
-            });
-            localStorage.setItem("name", fullName);
-        } catch (error) {}
+        await Axios.post("http://localhost:3001/addorganisation", {
+            fullName: fullName,
+            phoneNumber: phoneNumber,
+            password: password,
+            email: email,
+        });
+        return navigate("/loginorganisation");
     };
-
+    const encodeFileToBase64 = (file: File) => {
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            const base64String = event.target.result;
+            console.log(base64String)
+            setDocs(base64String);
+        };
+        reader.readAsDataURL(file);
+    };
     return (
         <div className="auth-container">
             <div className="swap-container">
@@ -33,9 +42,7 @@ function AuthOrganisation() {
                 </Link>
                 <Link to="/authorganisation">
                     <button
-                        className={`swap-button ${
-                            isOrganizationPage ? "active" : ""
-                        }`}
+                        className={`swap-button ${isOrganizationPage ? "active" : ""}`}
                     >
                         Волонтерська організація
                     </button>
@@ -57,9 +64,7 @@ function AuthOrganisation() {
                                 placeholder=" "
                                 onChange={(e) => setFullName(e.target.value)}
                             />
-                            <label className="input-label">
-                                Назва організації:
-                            </label>
+                            <label className="input-label">Назва організації:</label>
                         </div>
                         <div className="input-field">
                             <input
@@ -79,9 +84,7 @@ function AuthOrganisation() {
                                 placeholder=" "
                                 onChange={(e) => setPhoneNumber(e.target.value)}
                             />
-                            <label className="input-label">
-                                Номер телефону:
-                            </label>
+                            <label className="input-label">Номер телефону:</label>
                         </div>
                         <div className="input-field">
                             <input
@@ -99,16 +102,13 @@ function AuthOrganisation() {
                                 type="password"
                                 value={confirmPassword}
                                 placeholder=" "
-                                onChange={(e) =>
-                                    setConfirmPassword(e.target.value)
-                                }
+                                onChange={(e) => setConfirmPassword(e.target.value)}
                             />
-                            <label className="input-label">
-                                Підтвердити пароль:
-                            </label>
+                            <label className="input-label">Підтвердити пароль:</label>
                         </div>
                         <br />
                         <div className="auth-button-container">
+                            <Link to="/"><img src="left-arrow.png" className="left-arrow" /></Link>
                             <button
                                 className="auth-submit-button"
                                 onClick={() => setPressedContinue(true)}
@@ -126,14 +126,11 @@ function AuthOrganisation() {
                                     name="firstFile"
                                     className="auth-file-input"
                                     type="file"
-                                    onChange={(e) =>
-                                        setFullName(e.target.value)
-                                    }
+                                    onChange={(event) => {
+                                        encodeFileToBase64(event.target.files[0]);
+                                    }}
                                 />
-                                <label
-                                    htmlFor="firstFile"
-                                    className="input-file-label"
-                                >
+                                <label htmlFor="firstFile" className="input-file-label">
                                     Документи, що підтверджують особу
                                 </label>
                                 <img
@@ -142,47 +139,28 @@ function AuthOrganisation() {
                                 />
                             </div>
                             <div className="input-file-field">
-                                <label
-                                    htmlFor="firstFile"
-                                    className="input-file-label"
-                                >
+                                <label htmlFor="firstFile" className="input-file-label">
                                     Напрямок організації
                                 </label>
                             </div>
                             <div className="radio-container">
                                 <label>
-                                    <input
-                                        type="radio"
-                                        name="option"
-                                        value="vpo"
-                                    />
+                                    <input type="radio" name="option" value="vpo" />
                                     Допомога ВПО
                                 </label>
                                 <br />
                                 <label>
-                                    <input
-                                        type="radio"
-                                        name="option"
-                                        value="invalid1"
-                                    />
+                                    <input type="radio" name="option" value="invalid1" />
                                     Допомога людям з обмеженими можливостями
                                 </label>
                                 <br />
                                 <label>
-                                    <input
-                                        type="radio"
-                                        name="option"
-                                        value="invalid2"
-                                    />
+                                    <input type="radio" name="option" value="invalid2" />
                                     Притулок для тварин
                                 </label>
                                 <br />
                                 <label>
-                                    <input
-                                        type="radio"
-                                        name="option"
-                                        value="veteran"
-                                    />
+                                    <input type="radio" name="option" value="veteran" />
                                     Волонтерство різного напрямку
                                 </label>
                                 <br />
@@ -193,12 +171,12 @@ function AuthOrganisation() {
                                     name="secondFile"
                                     className="auth-file-input"
                                     type="file"
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(event) => {
+                                        encodeFileToBase64(event.target.files[0]);
+                                    }}
                                 />
-                                <label
-                                    htmlFor="secondFile"
-                                    className="input-file-label"
-                                >
+
+                                <label htmlFor="secondFile" className="input-file-label">
                                     Документ, що підтверджує статус організації
                                 </label>
                                 <img
@@ -208,10 +186,11 @@ function AuthOrganisation() {
                             </div>
                             <br />
                             <div className="auth-button-container">
-                                <button
-                                    className="auth-submit-button"
-                                    onClick={handleSubmit}
-                                >
+                                <button onClick={() => setPressedContinue(false)}
+                                    style={{ border: 'none', padding: '0', outline: 'none' }}>
+                                    <img src="left-arrow.png" className="left-arrow" />
+                                </button>
+                                <button className="auth-submit-button" onClick={handleSubmit}>
                                     Зареєструватися
                                 </button>
                             </div>

@@ -1,5 +1,5 @@
 import Header from './Header'
-import '../welcomepage.css'
+import '../styles/welcomepage.css'
 import Footer from './Footer'
 
 function MainPage() {
@@ -9,7 +9,7 @@ function MainPage() {
             <section className='section1'>
                 <img src="helphub_main.jpg" alt="hands" className="image2" />
             </section>
-            <section className='section2'>
+            <section className='section2' id='section2'>
                 <div className="content">
                     <img src="hands.svg" alt="hands" className="image" />
                     <div className="text">
@@ -25,7 +25,7 @@ function MainPage() {
                     </div>
                 </div>
             </section>
-            <section className='section3'>
+            <section className='section3' id='section3'>
                 <div className="content">
                     <div className="text">
                         <h4>Ми хочемо об'єднати волонтерів і організації, щоб забезпечити швидкий та ефективний доступ до допомоги та ресурсів для тих, хто цього потребує.</h4>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Axios from "axios";
 import { Link } from 'react-router-dom'
-import "../form.css";
+import "../styles/form.css";
 
 function LoginPage() {
     const [email, setEmail] = useState("");
@@ -72,11 +72,12 @@ function LoginPage() {
                     </div>
                     <br />
                     <div className="auth-button-container">
+                        <Link to="/"><img src="left-arrow.png" className="left-arrow" /></Link>
                         <button
                             className="auth-submit-button"
                             onClick={handleSubmit}
                         >
-                            Далі
+                            Увійти
                         </button>
                     </div>
                 </div>

@@ -84,12 +84,14 @@ h2 {
     color: #76bdf1e5;
     font-weight: 400;
 }
+
 .input-file-field,
 .input-field {
     position: relative;
     margin-bottom: 10px;
     margin-top: 10px;
 }
+
 .input-file-field,
 .input-field input {
     border: none;
@@ -123,8 +125,12 @@ h2 {
     margin: 22px 0;
 }
 
-.login{
+.login {
     padding-top: 100px;
+}
+
+.auth-button-container {
+    bottom: 0;
 }
 
 .input-file-label {
@@ -145,7 +151,17 @@ h2 {
     width: 100%;
 }
 
+.left-arrow {
+    width: 50px;
+    margin-top: 5px;
+}
+
 .auth-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
 }
 
 .auth-submit-button {
@@ -154,6 +170,7 @@ h2 {
     border-color: #0d98fd;
     color: #9cd1f7;
     width: 180px;
+    margin-right: 40px;
 }
 
 .auth-submit-button:hover {
@@ -161,8 +178,8 @@ h2 {
     border-color: #2ea7ff;
 }
 
-.auth-input:focus + .input-label,
-.auth-input:not(:placeholder-shown) + .input-label {
+.auth-input:focus+.input-label,
+.auth-input:not(:placeholder-shown)+.input-label {
     transform: translateY(-0.5rem) scale(0.8);
     margin-top: -5px;
 }
@@ -213,6 +230,7 @@ h2 {
 .radio-container input[type="radio"]::before {
     background-image: url(../public/emptyRadio.svg);
 }
+
 .radio-container input[type="radio"]:checked::before {
     background-image: url(../public/filledRadio.svg);
 }
