@@ -27,7 +27,7 @@ const postSchema = mongoose.Schema({
   },
 });
 
-const postModel = mongoose.model("Post", postSchema);
+const postModel = mongoose.model("posts", postSchema);
 
 const addVolunteerPost = async (request, response) => {
   const {
@@ -62,7 +62,16 @@ const getAllVolunteerPosts = async (request, response) => {
   return response.status(200).json(posts);
 };
 
+const deleteVolunteerPostByName = async (request, response) => {
+  const { name } = request.body;
+  const deletedPost = await postModel.findOneAndDelete({ name });
+  console.log(deletedPost);
+
+  return response.status(200).json({ message: "Post deleted" });
+}
+
 module.exports = {
   addVolunteerPost,
   getAllVolunteerPosts,
+  deleteVolunteerPostByName
 };

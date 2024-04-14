@@ -10,6 +10,7 @@ const { verifyVolunteer } = require("./volunteer/verify.js");
 const {
   addVolunteerPost,
   getAllVolunteerPosts,
+  deleteVolunteerPostByName,
 } = require("./volunteer/post.js");
 
 // підключення й ініціалізація бази даних
@@ -156,10 +157,10 @@ app.put("/admin/verify-volunteer", verifyVolunteer);
 app.put("/admin/verify-job", () => null);
 app.get("/free-vacations", async (request, response) => {
   const vacations = await vacationsModel.find();
-  console.log(vacations);
-  response.status(200).json({ message: "Something happened"})
+  response.status(200).json(vacations.slice(0, 5));
 });
-//задання порту для серверу
+app.delete("/delete-post", deleteVolunteerPostByName);
+
 app.listen(3001, () => {
   console.log("server started on port 3001");
 });
