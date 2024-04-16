@@ -1,6 +1,6 @@
 # Project "HelpHub" for Codecon 2024
 
-[Відео-демонстрація проєкту](https://drive.google.com/file/d/1lyWnenAgNk_J3qVqI1Ox83m3bykieJHP/view?usp=sharing)
+[Відео-демонстрація проєкту](https://drive.google.com/file/d/11OqHvu-FX5SLwDlGR0ZvfU9xWv3-AUxm/view?usp=sharing)
 
 ### Тематика: 
 Платформа для допомоги постраждалим внаслідок війни
